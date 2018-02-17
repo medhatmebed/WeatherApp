@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 //Write the protocol declaration here:
 protocol ChangeCityDelegate {
@@ -26,7 +26,7 @@ class ChangeCityViewController: UIViewController {
         delegate?.userEnteredANewCityName(city: cityName)
 
         self.dismiss(animated: true, completion: nil)
- 
+        SVProgressHUD.show()
     }
     
     

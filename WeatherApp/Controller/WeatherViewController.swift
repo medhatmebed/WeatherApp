@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
     
@@ -89,7 +90,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     /***************************************************************/
 
     func updateUIWithWeatherData() {
-        
+        SVProgressHUD.dismiss()
         cityLabel.text = weatherDataModel.city
         temperatureLabel.text = "\(weatherDataModel.temperature)°"
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
@@ -128,7 +129,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     func userEnteredANewCityName(city: String) {
         
         let params : [String : String] = ["q" : city, "appid" : APP_ID]
-        
         getWeatherData(url: WEATHER_URL, parameters: params)
     }
 
